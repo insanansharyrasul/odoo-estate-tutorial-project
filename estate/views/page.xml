@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="menu_customer_form" model="website.menu">
+        <field name="name">Form Customer</field>
+        <field name="url">/customerform</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence">55</field>
+    </record>
+
+    <template id="create_customer" name="Create Customer">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="container oe_structure min-vh-100 d-flex justify-content-center align-items-center">
+                    <form role="form" action="/create/customer" method="POST">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                        <div class="form-group mb-3">
+                            <label for="name">Property Name</label>
+                            <input type="text" name="name" t-att-value="name" id="name" class="form-control" required="required"/>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="expected_price">Expected Price</label>
+                            <input type="text" name="expected_price" t-att-value="expected_price" id="expected_price" class="form-control" required="required"/>
+                        </div>
+                        <div class="clearfix oe_login_buttons">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <record id="customer_thanks" model="website.page">
+        <field name="name">Thanks</field>
+        <field name="type">qweb</field>
+        <field name="url">/customer-thanks</field>
+        <field name="website_published">True</field>
+        <field name="key">estate.customer_thanks</field>
+        <field name="arch" type="xml">
+            <t t-call="website.layout">
+                <div class="wrap">
+                    <div class="container mt-3">
+                        <h1>Thanks!</h1>
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="alert alert-success" role="status">
+                                    Your message has been sent succesfully
+                                </div> 
+                                <p>
+                                    We will get back to you shortly
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </field>
+    </record>
+
+</odoo>

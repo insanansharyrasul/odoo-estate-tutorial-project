@@ -1,0 +1,5 @@
+id, name, property_type_id:id
+id5, "Residential", estate_property_type.property_type_id
+id6, "Commercial", estate_property_type.property_type_id
+id3, "Industrial", estate_property_type.property_type_id
+id4, "Land", estate_property_type.property_type_id
